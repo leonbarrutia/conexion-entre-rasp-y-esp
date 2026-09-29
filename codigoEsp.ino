@@ -38,7 +38,7 @@ void recibirAccion() {
     // CAMBIAR ESTADO
     // -------------------------
 
-    if (mensaje == "cambiar_luz") {
+    if (mensaje == "Gesto_Luz_P1_1") {
 
         estadoLuz = !estadoLuz;
 
