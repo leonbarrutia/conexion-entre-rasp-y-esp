@@ -46,15 +46,12 @@ void recibirAccion() {
 
         digitalWrite(PIN_LUZ, estadoLuz);
 
-        Serial.print("Luz: ");
-
         if (estadoLuz1) {
             Serial.println("ENCENDIDA");
         } else {
             Serial.println("APAGADA");
         }
 
-        server.send(200, "text/plain", "Luz cambiada");
     }
 
 
@@ -74,23 +71,6 @@ void recibirAccion() {
             Serial.println("APAGADA");
         }
     }
-
-
-    // -------------------------
-    // APAGAR
-    // -------------------------
-
-    else if (mensaje == "apagar") {
-
-        estadoLuz = false;
-
-        digitalWrite(PIN_LUZ, LOW);
-
-        Serial.println("Luz APAGADA");
-
-        server.send(200, "text/plain", "Luz apagada");
-    }
-
 
     // -------------------------
     // MENSAJE DESCONOCIDO
