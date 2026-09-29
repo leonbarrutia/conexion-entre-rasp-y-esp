@@ -4,6 +4,7 @@
 // =========================
 // WIFI
 // =========================
+//Siemprer que se conecta y desconecta el ESP se le cambia la IP, entonces primero tenemosss que tener conectado el ESP y dsp reprogramar la Rasp, a no ser que le asignemos un IP especifico, veo dsp como hacerlo, pero preguntarle a chatgpt.
 
 const char* ssid = "MECA-IoT";
 const char* password = "IoT&2026";
@@ -15,7 +16,8 @@ const char* password = "IoT&2026";
 const int PIN_LUZ = 25;
 
 // Estado actual de la luz
-bool estadoLuz = false;
+bool estadoLuz1 = false;
+bool estadoLuz2 = false;
 
 // Servidor web
 WebServer server(80);
@@ -40,13 +42,13 @@ void recibirAccion() {
 
     if (mensaje == "Gesto_Luz_P1_1") {
 
-        estadoLuz = !estadoLuz;
+        estadoLuz1 = !estadoLuz1;
 
         digitalWrite(PIN_LUZ, estadoLuz);
 
         Serial.print("Luz: ");
 
-        if (estadoLuz) {
+        if (estadoLuz1) {
             Serial.println("ENCENDIDA");
         } else {
             Serial.println("APAGADA");
@@ -57,18 +59,20 @@ void recibirAccion() {
 
 
     // -------------------------
-    // PRENDER
+    
     // -------------------------
 
-    else if (mensaje == "prender") {
+    else if (mensaje == "Gesto_Luz_P1_2") {
 
-        estadoLuz = true;
+        estadoLuz2 = !estadoLuz2;
 
         digitalWrite(PIN_LUZ, HIGH);
 
-        Serial.println("Luz ENCENDIDA");
-
-        server.send(200, "text/plain", "Luz encendida");
+        if (estadoLuz2) {
+            Serial.println("ENCENDIDA");
+        } else {
+            Serial.println("APAGADA");
+        }
     }
 
 
