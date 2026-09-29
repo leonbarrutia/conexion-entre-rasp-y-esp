@@ -1,12 +1,13 @@
 import requests
 
 # IP de cada ESP32
-ESP_1 = "192.168.1.50" //Aca tiene que ir la IP del ESP1
-ESP_2 = "192.168.1.51" //Aca tiene que ir la IP del ESP2
+ESP_1 = "192.168.1.50" #Aca tiene que ir la IP del ESP1
+ESP_2 = "192.168.1.51" #Aca tiene que ir la IP del ESP2
 
-// Me conviene mandar el nombre de la deteccion de manos y "switchear" como en un case los estados,. De ON -> OFF y de OFF -> ON. 
-// OFF --> ON --> OFF --> ON
-// Vel 1 --> Vel 2 --> Vel 3 --> OFF --> Vel 1
+
+#Me conviene mandar el nombre de la deteccion de manos y "switchear" como en un case los estados,. De ON -> OFF y de OFF -> ON. 
+#OFF --> ON --> OFF --> ON
+# Vel 1 --> Vel 2 --> Vel 3 --> OFF --> Vel 1
 
 def enviar(ip, mensaje):
     try:
